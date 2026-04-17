@@ -33,6 +33,7 @@ let isMoving = false;
 
 function checkScroll() {
 
+  // ① ふわっと表示
   sections.forEach(section => {
     const position = section.getBoundingClientRect().top;
     const screenPosition = window.innerHeight / 1.2;
@@ -42,12 +43,16 @@ function checkScroll() {
     }
   });
 
+  // ② スクロール量チェック ←追加
+  if (window.scrollY < 100) return;
+
+  // ③ 遷移判定
   if (isMoving) return;
 
   nextSections.forEach(next => {
     const rect = next.getBoundingClientRect();
 
-    if (rect.top < window.innerHeight / 0.9) {
+    if (rect.top < window.innerHeight * 0.8) {
       isMoving = true;
 
       document.body.classList.add('fade-out');
@@ -59,7 +64,7 @@ function checkScroll() {
   });
 }
 
-// 初回実行 ←これ大事
+// 初回実行
 checkScroll();
 
 window.addEventListener('scroll', checkScroll);
