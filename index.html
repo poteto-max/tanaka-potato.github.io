@@ -20,10 +20,10 @@
 			<a href="https://google.co.jp">
 			<img src="images/poteto_1104.png" alt="八丁公園">
 			</a>
+	</div>
 			<div class="next">
   				<p>つづく →</p>
 			</div>
-	</div>
 
 <script>
 const sections = document.querySelectorAll('.section');
@@ -36,23 +36,21 @@ function checkScroll() {
   // ① ふわっと表示
   sections.forEach(section => {
     const position = section.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 1.2;
 
-    if (position < screenPosition) {
+    if (position < window.innerHeight * 0.9) {
       section.classList.add('show');
     }
   });
 
-  // ② スクロール量チェック ←追加
-  if (window.scrollY < 100) return;
-
-  // ③ 遷移判定
+  // ② 遷移判定（これだけにする）
   if (isMoving) return;
 
   nextSections.forEach(next => {
     const rect = next.getBoundingClientRect();
+	  console.log(rect.top);
 
-    if (rect.top < window.innerHeight * 0.8) {
+    // ★ここ重要（画面の真ん中より下に来たら発動）
+    if (rect.top < window.innerHeight * 0.7 && rect.top > 0) {
       isMoving = true;
 
       document.body.classList.add('fade-out');
@@ -64,9 +62,10 @@ function checkScroll() {
   });
 }
 
-// 初回実行
+// 初回チェック
 checkScroll();
 
+// スクロール時
 window.addEventListener('scroll', checkScroll);
 </script>
 <!--	<div id="container">
