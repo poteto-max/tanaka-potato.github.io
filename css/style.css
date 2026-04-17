@@ -1,0 +1,111 @@
+@charset "UTF-8";
+/* CSS Document */
+/*　共通部分
+_______________*/
+html {
+	font-size: 100%;
+}
+body {
+	font-family: "Yu Gothic Medium", "游ゴシック Medium", "YuGothic", "游ゴシック体", "ヒラギノ角ゴ Pro W3", "sans-serif";
+	line-height: 1.7;
+	color: #432;
+	background: #fff096;
+	transition: opacity 0.8s;
+}
+body.fade-out {
+  opacity: 0;
+}
+a {
+	text-decoration: none;
+}
+img {
+	max-width: 100%;
+}
+header,
+footer {
+	background: #8f5f35;
+	color: #fff096;
+	margin: 0 auto;
+	padding: 10px;
+	display: flex;
+}
+header h1{
+	margin: 50px  20px;
+
+}
+header img{
+	width: 133px;
+	margin: 10px auto;
+}
+/* セクション */
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  opacity: 1;
+  transform: translateY(80px) scale(0.95);
+  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 表示時 */
+.section.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* テキスト */
+h2 {
+  font-size: 28px;
+  margin-top: 60px;
+  letter-spacing: 2px;
+}
+
+/* 画像 */
+img {
+  width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+/* つぎへ */
+.next {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.next:hover {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+#container{
+	display: flex;
+	margin: auto;
+}
+section{
+	background: #fafade;
+	max-width: 700px;
+	margin: 20px auto;
+	padding: 0 4%;
+
+}
+aside{
+	background: #8f5f35;
+	max-width: 300px;
+	margin: 20px;
+	padding: 0 4%;
+}

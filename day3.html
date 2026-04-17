@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>ポテトとお芋</title>
+		<meta name="description" content="ポテトの好きなもの、日々の生活を紹介">
+		<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css"> <!--　リセットCSS　-->
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet"><!-- google fonts設定 -->
+		<link rel="icon" type="image/png" href="images/favi.png"><!--　ファビコン　-->
+	</head>
+	
+	<body>
+		<header><a href="index.html"><img src="images/ponde_potato01.png" alt="ポンデポテト"></a>
+			<h1>ポテトとお芋</h1>
+			<img src="images/logo_poteto.png" alt="横向きのイラスト" class="logo">
+		</header>
+
+	<div class="section">
+		<h2>ハミングロード<time datetime="2026-02-18">2026/02/18</time><date>2026/02/18</date></h2>
+		<img src="images/poteto_0218.png" alt="大好きなハミングロード">
+		<div class="next">
+  				<p>つづく →</p>
+		</div>
+	</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const nextSections = document.querySelectorAll('.next');
+
+let isMoving = false;
+
+function checkScroll() {
+
+  sections.forEach(section => {
+    const position = section.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.2;
+
+    if (position < screenPosition) {
+      section.classList.add('show');
+    }
+  });
+
+  if (isMoving) return;
+
+nextSections.forEach(next => {
+  const rect = next.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (!isMoving) {
+      isMoving = true;
+
+      document.body.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = "day2.html";
+      }, 800);
+    }
+  }
+});
+
+// 初回実行 ←これ大事
+checkScroll();
+
+window.addEventListener('scroll', checkScroll);
+</script>
+<!--	<div id="container">
+		<nav>
+		</nav>
+		<section>
+			<p>ひたすら寝ています。</p>
+			<a href="https://google.co.jp">
+			<img src="images/ponde_potato.png" alt="美しい桜" width="240">
+			</a>
+		</section>
+		<aside>
+			<p>ポテト日記</p>
+		</aside>
+	</div>  -->
+<!--　コメント　-->
+<!--		<h2>フォーム</h2>
+			<form>
+				名前：<input type="text" placeholder="名前">
+			</form>
+			<form>
+				メールアドレス：<input type="email" placeholder="aaa@">
+			</form>
+			<form>
+				メッセージ：<textarea  name="message" placeholder="メッセージを入力"></textarea>
+			</form>-->
+<!--　ラジオ　-->
+<!--			<form>
+				性別：
+				<input type="radio" name="gender" value="男">男
+				<input type="radio" name="gender" value="女" checked>女
+				<input type="radio" name="gender" value="その他">その他
+			</form>
+				<input type="checkbox" name="travel" value="日本国内" id="japan">
+				<label for="japan">日本国内</label>
+				<input type="checkbox" name="trabel" value="ヨーロッパ" id="europe">
+				<label for="europe">ヨーロッパ</label>
+				<input type="checkbox" name="trabel" value="東南アジア" id="asia">
+				<label for="asia">東南アジア</label>  -->
+		<footer></footer>
+	</body>
+</html>
