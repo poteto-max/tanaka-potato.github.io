@@ -30,6 +30,9 @@ footer {
 	display: flex;
 	 align-items: center;
   justify-content: space-between; /* 左・中央・右に分ける */
+	position: sticky;
+  top: 0;
+  z-index: 10;
 }
 header img{
 	width: 140px;
@@ -43,8 +46,8 @@ header img{
   align-items: center;
   flex-direction: column;
 
-  opacity: 1;
-  transform: translateY(80px) scale(0.95);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
   transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
