@@ -28,18 +28,16 @@ footer {
 	margin: 0 auto;
 	padding: 10px;
 	display: flex;
-}
-header h1{
-	margin: 50px  20px;
-
+	 align-items: center;
+  justify-content: space-between; /* 左・中央・右に分ける */
 }
 header img{
-	width: 133px;
-	margin: 10px auto;
+	width: 140px;
 }
 /* セクション */
 .section {
-  height: 100vh;
+  min-height: 100vh;
+  padding: 80px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,13 +63,13 @@ h2 {
 
 /* 画像 */
 img {
-  width: 500px;
+  width: 700px;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 /* つぎへ */
 .next {
-  height: 60vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
