@@ -37,6 +37,7 @@ const poteto = document.querySelector(".poteto");
 
 let isMoving = false;
 let lastScrollY = window.scrollY;
+let moveX = 0;
 
 function checkScroll() {
 
@@ -60,8 +61,8 @@ function checkScroll() {
     }
   });
 
-  // 🐕 通常移動
-  let moveX = (currentScrollY / document.body.scrollHeight) * window.innerWidth;
+  // 🐕 行きたい位置（←これがtargetX🔥）
+  let targetX = (currentScrollY / document.body.scrollHeight) * window.innerWidth;
 
   // 🐕 activeなsectionに対応する.nextだけ見る
   if (activeSection) {
@@ -72,7 +73,13 @@ function checkScroll() {
 
       if (rect.top < window.innerHeight * 0.9) {
         const nextCenter = rect.left + rect.width / 2;
-        moveX = nextCenter - 40;
+
+        targetX = nextCenter - 40;
+
+        // 止める
+        poteto.style.animationPlayState = "paused";
+      } else {
+        poteto.style.animationPlayState = "running";
       }
 
       // 遷移
@@ -87,41 +94,25 @@ function checkScroll() {
     }
   }
 
+  // 🐕 ぬるっと移動（ここ重要🔥）
+  moveX += (targetX - moveX) * 0.1;
+
+  // 🐕 反映
   moveX = Math.max(0, Math.min(moveX, window.innerWidth - 80));
   poteto.style.left = moveX + "px";
-
-  // ふわっと表示
-  sections.forEach(section => {
-    const pos = section.getBoundingClientRect().top;
-    if (pos < window.innerHeight / 1.2) {
-      section.classList.add('show');
-    }
-  });
 }
 
 checkScroll();
 window.addEventListener('scroll', checkScroll);
-	window.addEventListener("scroll", () => {
-  const poteto = document.querySelector(".poteto");
-  const section = document.querySelector(".section");
+	sections.forEach(section => {
+  const pos = section.getBoundingClientRect().top;
 
-  const rect = section.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
+  console.log(pos); // ←追加🔥
 
-  // セクションが画面に入ってる時だけ動く
-  if (rect.top < windowHeight && rect.bottom > 0) {
-
-    const scrollRatio = (windowHeight - rect.top) / (windowHeight + rect.height);
-
-    const moveX = scrollRatio * window.innerWidth;
-
-    poteto.style.left = moveX + "px";
+  if (pos < window.innerHeight / 1.2) {
+    section.classList.add('show');
   }
 });
-	const activeSection = [...sections].find(section => {
-  const rect = section.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom > 0;
-})
 </script>
 <!--	<div id="container">
 		<nav>
