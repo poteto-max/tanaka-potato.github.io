@@ -20,15 +20,13 @@
 			<h1>ポテトとお芋</h1>
 			<img src="images/header_dogs.png" alt="振り返りのイラスト" class="logo">	
 		</header>
-
+		<div class="poteto"></div>
 		<div class="section">
 			<h2>一つ森公園<time datetime="2026-04-16">2026/04/16</time></h2>
 			<video src="videos/poteto_0416.MOV" autoplay muted loop playsinline></video>
-			<div class="poteto"></div>
-		</div><div class="section">
-			<h2>一つ森公園<time datetime="2026-04-16">2026/04/16</time></h2>
+		</div>
+		<div class="section">
 			<img src="images/poteto_0416.png" alt="一つ森公園">
-			<div class="poteto"></div>
 		</div>
 		<div class="next">
   			<p>つづく →</p>
@@ -48,6 +46,14 @@ function checkScroll() {
 
   const currentScrollY = window.scrollY;
 
+	// 👇 これをここに入れる🔥🔥🔥
+sections.forEach(section => {
+const rect = section.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+      section.classList.add('show');
+    }
+  });
   // 向き
   if (currentScrollY > lastScrollY) {
     poteto.style.transform = "scaleX(-1)";
@@ -109,15 +115,7 @@ function checkScroll() {
 
 checkScroll();
 window.addEventListener('scroll', checkScroll);
-	sections.forEach(section => {
-  const pos = section.getBoundingClientRect().top;
 
-  console.log(pos); // ←追加🔥
-
-  if (pos < window.innerHeight / 1.2) {
-    section.classList.add('show');
-  }
-});
 </script>
 <!--	<div id="container">
 		<nav>
