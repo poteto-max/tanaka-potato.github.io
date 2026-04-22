@@ -101,9 +101,7 @@ function checkScroll() {
 
 checkScroll();
 window.addEventListener('scroll', checkScroll);
-</script>
-<script>
-window.addEventListener("scroll", () => {
+	window.addEventListener("scroll", () => {
   const poteto = document.querySelector(".poteto");
   const section = document.querySelector(".section");
 
@@ -123,7 +121,7 @@ window.addEventListener("scroll", () => {
 	const activeSection = [...sections].find(section => {
   const rect = section.getBoundingClientRect();
   return rect.top < window.innerHeight && rect.bottom > 0;
-});
+})
 </script>
 <!--	<div id="container">
 		<nav>
