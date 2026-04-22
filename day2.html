@@ -11,7 +11,7 @@
 		<link rel="icon" href="favicon.ico">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favi32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favi16.png">
-		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png"><!--　iPhoneHome　-->
 	</head>
 	
 	<body>
@@ -22,16 +22,20 @@
 		</header>
 		<div class="poteto"></div>
 		<div class="section">
-			<h2>一つ森公園<time datetime="2026-04-16">2026/04/16</time></h2>
-			<video src="videos/poteto_0416.MOV" autoplay muted loop playsinline></video>
+			<h2>ポン de Poteto<time datetime="2026-01-07">2026/01/07</time></h2>
+			<a href="https://google.co.jp"><img src="images/ponde.png" alt="八丁公園"></a>
 		</div>
 		<div class="section">
-			<img src="images/poteto_0416.png" alt="一つ森公園">
+			<h2>八丁公園<time datetime="2025-11-04">2025/11/04</time></h2>
+			<a href="https://google.co.jp"><img src="images/poteto_1104.png" alt="八丁公園"></a>
 		</div>
-		<div class="next">
-  			<p>つづく →</p>
+		<div class="section">
+			<a href="https://google.co.jp"><img src="images/poteto_0418.png" alt="八丁公園"></a>
 		</div>
 
+	<div class="next">
+  		<p>つづく →</p>
+	</div>
 
 <script>
 const sections = document.querySelectorAll('.section');
@@ -40,17 +44,17 @@ const poteto = document.querySelector(".poteto");
 
 let isMoving = false;
 let lastScrollY = window.scrollY;
-let moveX = 0;
+let moveX = 0;　//今いる場所の定義
 
 function checkScroll() {
 
-  const currentScrollY = window.scrollY;
+  const currentScrollY = window.scrollY;　
 
-	// 👇 これをここに入れる🔥🔥🔥
+	// 👇 .showの処理はcheckScrollの中に入れる*/
 sections.forEach(section => {
 const rect = section.getBoundingClientRect();
 
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
+  if (rect.top < window.innerHeight && rect.bottom > 0) {// 上が画面内に入った＆// 下もまだ画面内にある
       section.classList.add('show');
     }
   });
@@ -105,7 +109,7 @@ const rect = section.getBoundingClientRect();
     }
   }
 
-  // 🐕 ぬるっと移動（ここ重要🔥）
+  // 🐕 ターゲットにぬるっと移動（ここ重要🔥）
   moveX += (targetX - moveX) * 0.1;
 
   // 🐕 反映
@@ -113,7 +117,7 @@ const rect = section.getBoundingClientRect();
   poteto.style.left = moveX + "px";
 }
 
-checkScroll();
+checkScroll();/*チェックスクロール*/
 window.addEventListener('scroll', checkScroll);
 
 </script>
