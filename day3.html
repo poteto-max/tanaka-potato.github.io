@@ -63,16 +63,39 @@ function checkScroll() {
       document.body.classList.add('fade-out');
 
       setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = "day3.html";
       }, 800);
     }
   });
 }
 
-// 初回実行
+// 初回
 checkScroll();
 
 window.addEventListener('scroll', checkScroll);
+</script>
+<script>
+window.addEventListener("scroll", () => {
+  const poteto = document.querySelector(".poteto");
+  const section = document.querySelector(".section");
+
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // セクションが画面に入ってる時だけ動く
+  if (rect.top < windowHeight && rect.bottom > 0) {
+
+    const scrollRatio = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+    const moveX = scrollRatio * window.innerWidth;
+
+    poteto.style.left = moveX + "px";
+  }
+});
+	const activeSection = [...sections].find(section => {
+  const rect = section.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+});
 </script>
 <!--	<div id="container">
 		<nav>
