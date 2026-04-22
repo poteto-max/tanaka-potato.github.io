@@ -33,45 +33,73 @@
 <script>
 const sections = document.querySelectorAll('.section');
 const nextSections = document.querySelectorAll('.next');
+const poteto = document.querySelector(".poteto");
 
 let isMoving = false;
+let lastScrollY = window.scrollY;
 
 function checkScroll() {
 
-  // ① ふわっと表示
-  sections.forEach(section => {
-    const position = section.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 1.2;
+  const currentScrollY = window.scrollY;
 
-    if (position < screenPosition) {
-      section.classList.add('show');
+  // 向き
+  if (currentScrollY > lastScrollY) {
+    poteto.style.transform = "scaleX(-1)";
+  } else {
+    poteto.style.transform = "scaleX(1)";
+  }
+  lastScrollY = currentScrollY;
+
+  // 🐕 今見えてるsectionだけ取得
+  let activeSection = null;
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      activeSection = section;
     }
   });
 
-  // ② スクロール量チェック ←追加
-  if (window.scrollY < 100) return;
+  // 🐕 通常移動
+  let moveX = (currentScrollY / document.body.scrollHeight) * window.innerWidth;
 
-  // ③ 遷移判定
-  if (isMoving) return;
+  // 🐕 activeなsectionに対応する.nextだけ見る
+  if (activeSection) {
+    const next = activeSection.nextElementSibling;
 
-  nextSections.forEach(next => {
-    const rect = next.getBoundingClientRect();
+    if (next && next.classList.contains('next')) {
+      const rect = next.getBoundingClientRect();
 
-    if (rect.top < window.innerHeight * 0.8) {
-      isMoving = true;
+      if (rect.top < window.innerHeight * 0.9) {
+        const nextCenter = rect.left + rect.width / 2;
+        moveX = nextCenter - 40;
+      }
 
-      document.body.classList.add('fade-out');
+      // 遷移
+      if (rect.top < window.innerHeight * 0.8 && !isMoving) {
+        isMoving = true;
+        document.body.classList.add('fade-out');
 
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 800);
+        setTimeout(() => {
+          window.location.href = "day3.html";
+        }, 800);
+      }
+    }
+  }
+
+  moveX = Math.max(0, Math.min(moveX, window.innerWidth - 80));
+  poteto.style.left = moveX + "px";
+
+  // ふわっと表示
+  sections.forEach(section => {
+    const pos = section.getBoundingClientRect().top;
+    if (pos < window.innerHeight / 1.2) {
+      section.classList.add('show');
     }
   });
 }
 
-// 初回
 checkScroll();
-
 window.addEventListener('scroll', checkScroll);
 </script>
 <script>
