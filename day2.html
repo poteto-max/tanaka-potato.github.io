@@ -5,29 +5,29 @@
 		<title>ポテトとお芋</title>
 		<meta name="description" content="ポテトの好きなもの、日々の生活を紹介">
 		<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css"> <!--　リセットCSS　-->
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="style.css">
 		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet"><!-- google fonts設定 -->
 		<link rel="icon" type="image/png" href="images/favi.png"><!--　ファビコン　-->
 		<link rel="icon" href="favicon.ico">
 		<link rel="icon" type="image/png" sizes="32x32" href="images/favi32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="images/favi16.png">
 		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 	</head>
 	
 	<body>
-		<header><a href="index.html"><img src="images/ponde_potato01.png" alt="ポンデポテト"></a>
+		<header>
+			<a href="index.html"><img src="images/ponde_potato01.png" alt="ポンデポテト"></a>
 			<h1>ポテトとお芋</h1>
-			<img src="images/header_dogs.png" alt="振り返りのイラスト" class="logo">
-			<div class="poteto"></div>	
+			<img src="images/header_dogs.png" alt="振り返りのイラスト" class="logo">	
 		</header>
 
-	<div class="section">
-		<h2>一つ森公園<time datetime="2026-04-16">2026/04/16</time></h2>
-		<img src="images/poteto_0416.png" alt="一つ森公園">
-	</div>
+		<div class="section">
+			<h2>一つ森公園<time datetime="2026-04-16">2026/04/16</time></h2>
+			<img src="images/poteto_0416.png" alt="一つ森公園">
+			<div class="poteto"></div>
+		</div>
 		<div class="next">
-  				<p>つづく →</p>
+  			<p>つづく →</p>
 		</div>
 
 
@@ -70,10 +70,33 @@ function checkScroll() {
   });
 }
 
-// 初回実行
+// 初回
 checkScroll();
 
 window.addEventListener('scroll', checkScroll);
+</script>
+<script>
+window.addEventListener("scroll", () => {
+  const poteto = document.querySelector(".poteto");
+  const section = document.querySelector(".section");
+
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // セクションが画面に入ってる時だけ動く
+  if (rect.top < windowHeight && rect.bottom > 0) {
+
+    const scrollRatio = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+    const moveX = scrollRatio * window.innerWidth;
+
+    poteto.style.left = moveX + "px";
+  }
+});
+	const activeSection = [...sections].find(section => {
+  const rect = section.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+});
 </script>
 <!--	<div id="container">
 		<nav>
