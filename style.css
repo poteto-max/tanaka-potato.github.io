@@ -109,7 +109,9 @@ img {
   opacity: 1;
 }
 
-
+* {
+  outline: 1px solid red;
+}
 .poteto {
 	position: fixed; /* ←ここ重要🔥 */
 	bottom: 20px;
