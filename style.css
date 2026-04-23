@@ -11,6 +11,8 @@ body {
 	color: #432;
 	background: #fff096;
 	transition: opacity 0.8s;
+	max-width: 100%;
+  overflow-x: hidden;
 }
 body.fade-out {
 	opacity: 0;
@@ -141,7 +143,9 @@ img {
   }
 }
 .video-wrap {
-  width: 100%;
+	width: 100%;
+  max-width: 100%;
+  /*width: 100%;
   max-width: 400px; /* お好み */
   margin: 0 auto;
 	padding: 0 10px; /* 余白ちょい入れると安全 */
