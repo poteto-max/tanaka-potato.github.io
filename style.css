@@ -36,6 +36,25 @@ header {
 header img{
 	width: 140px;
 }
+#section-indicator {
+  position: fixed;
+  top: 80px; /* headerの下あたり */
+  right: 20px;
+
+  font-size: 20px;
+  font-weight: bold;
+	
+	/*font-size: 14px;
+	opacity: 0.8;*/
+
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+	transition: all 0.3s ease;
+
+  z-index: 9999;
+}
 footer{
 	background: #8f5f35;
 	color: #fff096;
@@ -120,9 +139,32 @@ img {
     height: 200px;
   }
 }
+.video-wrap {
+  width: 100%;
+  max-width: 400px; /* お好み */
+  margin: 0 auto;
+}
 
+.video-wrap video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16; /* ←縦動画の肝🔥 */
+  object-fit: cover;
+  border-radius: 20px;
+}
 
+/*　スマホ全画面
+.video-wrap {
+  width: 100%;
+  height: 100vh;
+}
 
+.video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+*/
 
 
 

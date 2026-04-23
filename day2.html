@@ -20,6 +20,7 @@
 			<h1>ポテトとお芋</h1>
 			<img src="images/header_dogs.png" alt="振り返りのイラスト" class="logo">	
 		</header>
+		<div id="section-indicator">#1</div>
 		<div class="poteto"></div>
 		<div class="section">
 			<h2>ポン de Poteto<time datetime="2026-01-07">2026/01/07</time></h2>
@@ -49,6 +50,16 @@ let moveX = 0;　//今いる場所の定義
 function checkScroll() {
 
   const currentScrollY = window.scrollY;　
+	
+	const indicator = document.getElementById("section-indicator");//ページカウント
+
+sections.forEach((section, index) => {
+  const rect = section.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    indicator.textContent = `#${index + 1}`;
+  }
+});
 
 	// 👇 .showの処理はcheckScrollの中に入れる*/
 sections.forEach(section => {
