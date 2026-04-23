@@ -143,23 +143,23 @@ img {
   }
 }
 .video-wrap {
-	width: 100%;
-  max-width: 100%;
+width: 100%;
+max-width: 100%;
   /*width: 100%;
   max-width: 400px; /* お好み */
-  margin: 0 auto;
-	padding: 0;
+margin: 0 auto;
+padding: 0;
 	/*padding: 0 10px; /* 余白ちょい入れると安全 */
-	box-sizing: border-box; /* ←padding込みで100%になる */
+box-sizing: border-box; /* ←padding込みで100%になる */
 }
 
 .video-wrap video {
-	display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 9 / 16; /* ←縦動画の肝🔥 */
-  object-fit: cover;
-  border-radius: 20px;
+display: block;
+width: 100%;
+height: auto;
+/*aspect-ratio: 9 / 16; /* ←縦動画の肝🔥 */
+object-fit: cover;
+border-radius: 20px;
 }
 
 /*　スマホ全画面
