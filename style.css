@@ -148,7 +148,8 @@ img {
   /*width: 100%;
   max-width: 400px; /* お好み */
   margin: 0 auto;
-	padding: 0 10px; /* 余白ちょい入れると安全 */
+	padding: 0;
+	/*padding: 0 10px; /* 余白ちょい入れると安全 */
 	box-sizing: border-box; /* ←padding込みで100%になる */
 }
 
