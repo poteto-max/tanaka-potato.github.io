@@ -12,7 +12,7 @@ body {
 	background: #fff096;
 	transition: opacity 0.8s;
 	max-width: 100%;
-  overflow-x: hidden;
+	overflow-x: hidden;
 }
 body.fade-out {
 	opacity: 0;
@@ -39,23 +39,23 @@ header img{
 	width: 140px;
 }
 #section-indicator {
-  position: fixed;
-  top: 80px; /* headerの下あたり */
-  right: 20px;
+	position: fixed;
+	top: 80px; /* headerの下あたり */
+	right: 20px;
 
-  font-size: 20px;
-  font-weight: bold;
+	font-size: 20px;
+	font-weight: bold;
 	
 	/*font-size: 14px;
 	opacity: 0.8;*/
 
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
+	background: rgba(0,0,0,0.6);
+	color: #fff;
+	padding: 8px 12px;
+	border-radius: 10px;
 	transition: all 0.3s ease;
 
-  z-index: 9999;
+	z-index: 9999;
 }
 footer{
 	background: #8f5f35;
@@ -65,51 +65,51 @@ footer{
 }
 /* セクション */
 .section {
-  min-height: 100vh;
-  padding: 80px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	min-height: 100vh;
+	padding: 80px 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+	opacity: 0;
+	transform: translateY(20px) scale(0.95);
+	transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 	position: relative;
 }
 
 /* 表示時 */
 .section.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+	opacity: 1;
+	transform: translateY(0) scale(1);
 }
 
 /* テキスト */
 h2 {
-  font-size: 28px;
-  letter-spacing: 2px;
+	font-size: 28px;
+	letter-spacing: 2px;
 }
 
 /* 画像 */
 img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+	max-width: 100%;
+	height: auto;
+	border-radius: 20px;
+	box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 /* つぎへ */
 .next {
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  opacity: 0.5;
-  transition: 0.5s;
+	height: 30vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	opacity: 0.5;
+	transition: 0.5s;
 }
 
 .next:hover {
-  opacity: 1;
+	opacity: 1;
 }
 
 
@@ -119,10 +119,13 @@ img {
  	left: 0;
 	z-index: 9999; /* ←これ追加🔥 */
 	width: 160px;
-	height: 160px;
+  height: 160px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
 	filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
 
- 	background: url(images/poteto_walk1.png) no-repeat center/contain;
+ 	/*background: url(images/poteto_walk1.png) no-repeat center/contain;
 
 	animation: step 0.5s infinite;
 	transition: left 0.2s linear;
@@ -137,29 +140,41 @@ img {
   }
 }
 @media (max-width: 768px) {
-  .poteto {
+.poteto {
     width: 200px;
     height: 200px;
   }
 }
 .video-wrap {
-width: 100%;
-max-width: 100%;
+	width: 100%;
+	max-width: 100%;
   /*width: 100%;
-  max-width: 400px; /* お好み */
-margin: 0 auto;
-padding: 0;
+	max-width: 400px; /* お好み */
+	margin: 0 auto;
+	padding: 0;
 	/*padding: 0 10px; /* 余白ちょい入れると安全 */
-box-sizing: border-box; /* ←padding込みで100%になる */
+	box-sizing: border-box; /* ←padding込みで100%になる */
 }
 
+
+
+
 .video-wrap video {
-display: block;
-width: 100%;
-height: auto;
-/*aspect-ratio: 9 / 16; /* ←縦動画の肝🔥 */
-object-fit: cover;
-border-radius: 20px;
+	display: block;
+	width: 100%;
+	height: auto;
+	/*aspect-ratio: 9 / 16; /* ←縦動画の肝🔥 */
+	object-fit: cover;
+	border-radius: 20px;
+}
+
+.walk {
+  animation: step 0.5s infinite;
+	transition: left 0.2s linear;
+}
+.sit {
+  background: url(images/poteto_sit.png) no-repeat center/contain;
+  animation: none;
 }
 
 /*　スマホ全画面

@@ -21,6 +21,7 @@
 			<img src="images/header_dogs.png" alt="振り返りのイラスト" class="logo">	
 		</header>
 		<div id="section-indicator">#1</div>
+		<div class="poteto sit"></div>
 		<div class="poteto"></div>
 		<div class="section">
 			<h2>Babyポテト<time datetime="2023-05-22">2025/05/22</time></h2>
@@ -34,17 +35,35 @@
 	</div>
 
 <script>
-const sections = document.querySelectorAll('.section');
+const sections = document.querySelectorAll('.section');//関数宣言
 const nextSections = document.querySelectorAll('.next');
 const poteto = document.querySelector(".poteto");
 
 let isMoving = false;
 let lastScrollY = window.scrollY;
 let moveX = 0;　//今いる場所の定義
+let scrollTimer;
+
+// スクロール開始時
+window.addEventListener('scroll', () => {
+
+  // 歩く状態
+  poteto.classList.remove('sit');
+  poteto.classList.add('walk');
+
+  // タイマーリセット
+  clearTimeout(scrollTimer);
+
+  // スクロール止まったら発動
+  scrollTimer = setTimeout(() => {
+    poteto.classList.remove('walk');
+    poteto.classList.add('sit');
+  }, 500); // ←ここで“間”調整😏
+});
 
 function checkScroll() {
 
-  const currentScrollY = window.scrollY;　
+const currentScrollY = window.scrollY;　
 	
 const indicator = document.getElementById("section-indicator");//ページカウント
 
@@ -58,9 +77,9 @@ sections.forEach((section, index) => {
 	
 	// 👇 .showの処理はcheckScrollの中に入れる*/
 sections.forEach(section => {
-const rect = section.getBoundingClientRect();
+	const rect = section.getBoundingClientRect();
 
-  if (rect.top < window.innerHeight && rect.bottom > 0) {// 上が画面内に入った＆// 下もまだ画面内にある
+  if (rect.top < window.innerHeight && rect.bottom > 0) {// 上が画面内に入った＆下もまだ画面内にある
       section.classList.add('show');
     }
   });

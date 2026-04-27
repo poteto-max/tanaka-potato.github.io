@@ -21,6 +21,7 @@
 			<img src="images/header_dogs.png" alt="振り返りのイラスト" class="logo">	
 		</header>
 		<div id="section-indicator">#1</div>
+		<div class="poteto sit"></div>
 		<div class="poteto"></div>
 		<div class="section">
 			<h2>ポン de Poteto<time datetime="2026-01-07">2026/01/07</time></h2>
@@ -46,6 +47,24 @@ const poteto = document.querySelector(".poteto");
 let isMoving = false;
 let lastScrollY = window.scrollY;
 let moveX = 0;　//今いる場所の定義
+	let scrollTimer;
+
+// スクロール開始時
+window.addEventListener('scroll', () => {
+
+  // 歩く状態
+  poteto.classList.remove('sit');
+  poteto.classList.add('walk');
+
+  // タイマーリセット
+  clearTimeout(scrollTimer);
+
+  // スクロール止まったら発動
+  scrollTimer = setTimeout(() => {
+    poteto.classList.remove('walk');
+    poteto.classList.add('sit');
+  }, 500); // ←ここで“間”調整😏
+});
 
 function checkScroll() {
 
